@@ -42,8 +42,10 @@
   <div id="map" style='width: 800px; height: 400px;'></div>
 </div>
 
-<% @spots.each do |spot| %>
-<p><%= spot.name %></p>
+<% if @schools.any? %>
+  <% @spots.each do |spot| %>
+  <p><%= spot.name %></p>
+  <% end %>
 <% end %>
 
 <script type="text/javascript">
