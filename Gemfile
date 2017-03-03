@@ -36,6 +36,7 @@ gem 'rails_admin'
 gem 'materialize-sass'
 gem 'geocoder'
 gem 'gmaps4rails'
+gem 'google_places'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development

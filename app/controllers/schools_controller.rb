@@ -5,6 +5,9 @@ class SchoolsController < ApplicationController
   # GET /schools.json
   def index
     @schools = School.all
+    @last_school = School.last
+    @client = GooglePlaces::Client.new('AIzaSyCXYtb08IbxlM7vs60KJgJjhlEJM6xAuEg')
+    @spots = @client.spots(@last_school.latitude, @last_school.longitude, :types => 'school')
   end
 
   # GET /schools/1
