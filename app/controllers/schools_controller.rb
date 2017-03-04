@@ -4,17 +4,7 @@ class SchoolsController < ApplicationController
   # GET /schools
   # GET /schools.json
   def index
-    @schools = School.all
-    if @schools.any?
-      @last_school = School.last
-      @client = GooglePlaces::Client.new('AIzaSyCXYtb08IbxlM7vs60KJgJjhlEJM6xAuEg')
-      @spots = @client.spots(@last_school.latitude, @last_school.longitude, :types => 'school')
-    end
-    @hash = Gmaps4rails.build_markers(@spots) do |spot, marker|
-      marker.lat spot.lat
-      marker.lng spot.lng
-      marker.infowindow spot.name
-    end
+   @schools = School.all
   end
 
   # GET /schools/1

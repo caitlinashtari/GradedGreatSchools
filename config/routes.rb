@@ -1,9 +1,10 @@
 Rails.application.routes.draw do
 
+  resources :searches
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
   devise_for :users
 
-  root 'home#index'
+  root 'searches#index'
 
   resources :users do
     resources :reviews
