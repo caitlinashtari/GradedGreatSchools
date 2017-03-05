@@ -18,6 +18,7 @@ class SearchesController < ApplicationController
     end
   end
 
+
   # GET /searches/1
   # GET /searches/1.json
   def show
