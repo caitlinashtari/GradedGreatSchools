@@ -5,16 +5,24 @@ class SchoolsController < ApplicationController
   # GET /schools.json
   def index
    @schools = School.all
+   @school = School.where(text: params[:text]).first
   end
 
   # GET /schools/1
   # GET /schools/1.json
   def show
+
   end
 
   # GET /schools/new
   def new
-    @school = School.new
+    find_school = School.where(text: params[:text]).first
+    if find_school
+      redirect_to school_path(find_school.id)
+    else
+      @school = School.new
+    end
+
   end
 
   # GET /schools/1/edit

@@ -38,11 +38,12 @@
 
 <% if @searches.any? %>
   <% @spots.each do |spot| %>
-    <%= link_to new_school_path(text: spot.name) do %>
-      <p id="new-search"><%= spot.name %></p>
-    <% end %>
+      <%= link_to new_school_path(text: spot.name) do %>
+        <p id="new-search"><%= spot.name %></p>
+      <% end %>
   <% end %>
 <% end %>
+
 
 <script type="text/javascript">
 buildMap(<%=raw @hash.to_json %>);
