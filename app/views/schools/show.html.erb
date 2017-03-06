@@ -2,5 +2,8 @@
 
 <p><%= @school.text %></p>
 
+<%= image_tag "https://maps.googleapis.com/maps/api/staticmap?zoom=13&size=600x300&maptype=roadmap&markers=#{@school.latitude}%2C#{@school.longitude}&key=AIzaSyAPpC4B-jAi7UWtxOvcNTS3ogaExv1OdlI"%>
+
+
 <%= link_to 'Edit', edit_school_path(@school) %> |
 <%= link_to 'Back', schools_path %>

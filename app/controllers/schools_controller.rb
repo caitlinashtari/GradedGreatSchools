@@ -30,7 +30,7 @@ class SchoolsController < ApplicationController
     if find_school
       redirect_to school_path(find_school.id)
     else
-      @school = School.new(text: params[:text])
+      @school = School.new(text: params[:text], latitude: params[:latitude], longitude: params[:longitude])
       respond_to do |format|
         if @school.save
           format.html { redirect_to schools_path, notice: 'School was successfully created.' }
@@ -75,6 +75,6 @@ class SchoolsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def school_params
-      params.require(:school).permit(:text)
+      params.require(:school).permit(:text, :latitude, :longitude)
     end
 end

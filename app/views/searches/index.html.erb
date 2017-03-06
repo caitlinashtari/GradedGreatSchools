@@ -14,7 +14,7 @@
 
 <% if @searches.any? %>
   <% @spots.each do |spot| %>
-      <%= link_to schools_path(text: spot.name), method: "post" do %>
+      <%= link_to schools_path(text: spot.name, latitude: spot.lat, longitude: spot.lng), method: "post" do %>
         <p id="new-search"><%= spot.name %></p>
       <% end %>
   <% end %>
