@@ -1,4 +1,4 @@
-<%= form_for(@school) do |f| %>
+<%= form_for @school do |f| %>
   <% if @school.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@school.errors.count, "error") %> prohibited this @school from being saved:</h2>
@@ -12,23 +12,8 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :address %>
-    <%= f.text_field :address %>
-  </div>
-
-  <div class="field">
     <%= f.label :text %>
     <%= f.text_field :text, value: params[:text] %>
-  </div>
-
-  <div class="field">
-    <%= f.label :description %>
-    <%= f.text_area :description %>
-  </div>
-
-  <div class="field">
-    <%= f.label :zip %>
-    <%= f.number_field :zip %>
   </div>
 
   <div class="actions">

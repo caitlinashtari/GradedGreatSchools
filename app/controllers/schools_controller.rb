@@ -16,13 +16,7 @@ class SchoolsController < ApplicationController
 
   # GET /schools/new
   def new
-    find_school = School.where(text: params[:text]).first
-    if find_school
-      redirect_to school_path(find_school.id)
-    else
       @school = School.new
-    end
-
   end
 
   # GET /schools/1/edit
@@ -32,14 +26,19 @@ class SchoolsController < ApplicationController
   # POST /schools
   # POST /schools.json
   def create
-    @school = School.new(school_params)
-    respond_to do |format|
-      if @school.save
-        format.html { redirect_to schools_path, notice: 'School was successfully created.' }
-        format.js
-      else
-        format.html { render :new }
-        format.json { render json: @school.errors, status: :unprocessable_entity }
+    find_school = School.where(text: params[:text]).first
+    if find_school
+      redirect_to school_path(find_school.id)
+    else
+      @school = School.new(text: params[:text])
+      respond_to do |format|
+        if @school.save
+          format.html { redirect_to schools_path, notice: 'School was successfully created.' }
+          format.js
+        else
+          format.html { render :new }
+          format.json { render json: @school.errors, status: :unprocessable_entity }
+        end
       end
     end
   end
@@ -76,6 +75,6 @@ class SchoolsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def school_params
-      params.require(:school).permit(:latitude, :longitude, :address, :text, :description, :zip)
+      params.require(:school).permit(:text)
     end
 end

@@ -38,7 +38,7 @@
 
 <% if @searches.any? %>
   <% @spots.each do |spot| %>
-      <%= link_to new_school_path(text: spot.name) do %>
+      <%= link_to schools_path(text: spot.name), method: "post" do %>
         <p id="new-search"><%= spot.name %></p>
       <% end %>
   <% end %>
