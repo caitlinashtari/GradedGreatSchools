@@ -5,32 +5,8 @@
 
 <p id="notice"><%= notice %></p>
 
-<h1>Search</h1>
+<%= render "search" %>
 
-<%= render "form", search: @search%>
-
-<table>
-  <thead>
-    <tr>
-      <th>Zip</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @searches.each do |search| %>
-      <tr>
-        <td><%= search.zip %></td>
-        <td><%= link_to 'Edit', edit_search_path(search) %></td>
-        <td><%= link_to 'Destroy', search_path(search), method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
-<br>
-
-<%= link_to 'New Search', new_search_path %>
 
 <div style='width: 800px;'>
   <div id="map" style='width: 800px; height: 400px;'></div>
