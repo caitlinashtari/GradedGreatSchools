@@ -31,14 +31,10 @@ class SchoolsController < ApplicationController
       redirect_to school_path(find_school.id)
     else
       @school = School.new(text: params[:text], latitude: params[:latitude], longitude: params[:longitude])
-      respond_to do |format|
-        if @school.save
-          format.html { redirect_to schools_path, notice: 'School was successfully created.' }
-          format.js
-        else
-          format.html { render :new }
-          format.json { render json: @school.errors, status: :unprocessable_entity }
-        end
+      if @school.save
+        redirect_to school_path(@school)
+      else
+        render :new
       end
     end
   end
