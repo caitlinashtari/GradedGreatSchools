@@ -15,6 +15,7 @@ class SearchesController < ApplicationController
       marker.lat spot.lat
       marker.lng spot.lng
       marker.infowindow spot.name
+      marker.json({:id => spot.id})
     end
   end
 
@@ -37,14 +38,13 @@ class SearchesController < ApplicationController
   # POST /searches.json
   def create
     @search = Search.new(search_params)
-
     respond_to do |format|
       if @search.save
         format.html { redirect_to searches_path }
-        format.json { render :show, status: :created, location: @search }
+        format.js
       else
         format.html { render :new }
-        format.json { render json: @search.errors, status: :unprocessable_entity }
+        format.js
       end
     end
   end
@@ -53,7 +53,7 @@ class SearchesController < ApplicationController
   # PATCH/PUT /searches/1.json
   def update
     respond_to do |format|
-      if @search.update(search_params)
+      if @search.update(params[:text])
         format.html { redirect_to @search, notice: 'Search was successfully updated.' }
         format.json { render :show, status: :ok, location: @search }
       else

@@ -40,11 +40,12 @@
 
 <% if @searches.any? %>
   <% @spots.each do |spot| %>
-  <p><%= spot.name %></p>
+    <%= link_to new_school_path(spot.id, text: spot.name) do %>
+      <p id="new-search"><%= spot.name %></p>
+    <% end %>
   <% end %>
 <% end %>
 
-<ul id="markers_list">  </ul>
 
 
 
