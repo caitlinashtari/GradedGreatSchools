@@ -3,6 +3,8 @@
 
 <% if @schools.any? %>
   <% @schools.each do |school| %>
-    <p><%= school.text %></p>
+    <%= link_to school_path(school) do %>
+      <p><%= school.text %></p>
+    <% end %>
   <% end %>
 <% end %>
