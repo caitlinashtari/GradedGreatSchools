@@ -11,4 +11,8 @@ Rails.application.routes.draw do
     resources :reviews
   end
 
+  resources :schools do
+    resources :reviews
+  end
+
 end
