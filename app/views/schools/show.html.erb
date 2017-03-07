@@ -6,16 +6,21 @@
 
 <hr>
 
-<% @school.reviews.each do |review| %>
-  <p><%=  review.title %></p>
-  <p><%=  review.content %></p>
-  <p>By: <%= current_user.first_name %></p>
-  <% if review.user_id == current_user.id %>
-    <%= link_to "Edit", edit_school_review_path(@school, review.id) %>
-    <%= link_to "Delete", school_review_path(@school, review.id), method: "delete" %>
+<% if @school.reviews.any? %>
+  <h4>Schoool Reviews</h4>
+  <% @school.reviews.each do |review| %>
+    <p><%=  review.title %></p>
+    <p><%=  review.content %></p>
+    <p>By: <%= current_user.first_name %></p>
+    <% if review.user_id == current_user.id %>
+      <%= link_to "Edit", edit_school_review_path(@school, review.id) %>
+      <%= link_to "Delete", school_review_path(@school, review.id), method: "delete" %>
+    <% end %>
   <% end %>
+  <br>
+<% else %>
+  <p>Be the first to review <%= @school.text %></p>
 <% end %>
-<br>
 
 <%= link_to "New Review", new_school_review_path(@school) %>
 
