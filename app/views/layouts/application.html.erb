@@ -3,41 +3,78 @@
   <head>
     <title>Graded</title>
     <%= csrf_meta_tags %>
-
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="../assets/css/main.css" />
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_link_tag    'css/main', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
   <body>
-    <div class="navbar-fixed">
-        <nav>
-          <div class="nav-wrapper">
-            <a href="/" class="left brand-logo">Graded</a>
-            <ul id="nav-mobile" class="right hide-on-med-and-down">
-              <% if user_signed_in? %>
-                <li><%= link_to 'Edit Profile', edit_user_registration_path %></li>
-                <li><%= link_to 'Logout', destroy_user_session_path, method: :delete %></li>
-              <% if current_user.is_admin %>
-                <li><%= link_to "Admin", rails_admin_path %></li>
-              <% end %>
-                <li><%= current_user.first_name %></li>
-              <% else %>
-                <li><%= link_to "Sign-up", new_user_registration_path %></li>
-                <li><%= link_to "Login", new_user_session_path %></li>
-              <% end %>
-            </ul><br>
-         </div>
-        </nav>
+    <!-- Header/Sidebar -->
+			<section id="header">
+				<header>
+					<h1 id="logo"><a href="/">Graded</a></h1>
+					<p>It's the ninth hour. Do you know who's teaching your kids?</p>
+				</header>
+				<nav id="nav">
+					<ul>
+						<li><a href="">About</a></li>
+            <li><%= link_to 'Search Schools', searches_path %></li>
+            <hr>
+            <% if user_signed_in? %>
+              <li><%= link_to 'Edit Profile', edit_user_registration_path %></li>
+              <li><%= link_to 'Logout', destroy_user_session_path, method: :delete %></li>
+            <% if current_user.is_admin %>
+              <li><%= link_to "Admin", rails_admin_path %></li>
+            <% end %>
+              <li>Hey <%= current_user.first_name %></li>
+            <% else %>
+              <li><%= link_to "Sign-up", new_user_registration_path %></li>
+              <li><%= link_to "Login", new_user_session_path %></li>
+            <% end %>
+					</ul>
+				</nav>
+
+      <!-- Sidebar Footer -->
+				<footer>
+					<ul class="icons">
+						<li><a href="#" class="icon fa-twitter"><span class="label">Twitter</span></a></li>
+						<li><a href="#" class="icon fa-facebook"><span class="label">Facebook</span></a></li>
+						<li><a href="#" class="icon fa-instagram"><span class="label">Instagram</span></a></li>
+						<li><a href="#" class="icon fa-envelope"><span class="label">Email</span></a></li>
+					</ul>
+				</footer>
+			</section>
+
+      <!-- Wrapper -->
+			<div id="wrapper">
+			<!-- Main -->
+				<div id="main">
+          <section id="one">
+            <div class="container">
+							<header class="major">
+                <div class="notice">
+                  <%= flash[:notice] %>
+                </div>
+                <div class="alert">
+                  <%= flash[:alert] %>
+                </div>
+                <%= yield %>
+              </header>
+            </div>
+          </section>
+        </div>
       </div>
 
-      <div class="container">
-        <div class="notice">
-          <%= flash[:notice] %>
+
+    <!-- Footer -->
+      <section id="footer">
+        <div class="container">
+          <ul class="copyright">
+            <li>&copy; 2017 Graded All rights reserved.</li><li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
+          </ul>
         </div>
-        <div class="alert">
-          <%= flash[:alert] %>
-        </div>
-        <%= yield %>
-      </div>
+      </section>
     </body>
   </html>
