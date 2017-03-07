@@ -29,7 +29,7 @@ class SearchesController < ApplicationController
         format.html { redirect_to searches_path }
         format.js
       else
-        format.html { render :new }
+        format.html { redirect_to searches_path }
         format.js
       end
     end
