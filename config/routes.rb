@@ -4,15 +4,15 @@ Rails.application.routes.draw do
 
   root 'searches#index'
 
-  resources :searches
-  resources :schools
+  resources :searches, :except => [:show, :edit, :update, :destroy]
+  resources :schools, :except => [:index, :edit, :update, :destroy]
 
   resources :users do
-    resources :reviews
+    resources :reviews, :only => [:index, :show]
   end
 
   resources :schools do
-    resources :reviews
+    resources :reviews, :except => [:index, :show]
   end
 
 end

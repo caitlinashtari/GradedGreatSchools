@@ -1,10 +1,6 @@
 class ReviewsController < ApplicationController
   before_action :authenticate_user!
 
-  def show
-    @reviews = Review.all
-  end
-
   def new
     @school = School.find(params[:school_id])
     @review = @school.reviews.new
