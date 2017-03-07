@@ -1,5 +1,4 @@
 class ReviewsController < ApplicationController
-  before_action :set_review, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_user!
 
   def show
@@ -45,9 +44,6 @@ class ReviewsController < ApplicationController
   end
 
 private
-  def set_review
-    @review = Review.find(params[:id])
-  end
 
   def review_params
     params.require(:review).permit(:title, :content, :user_id)
