@@ -1,34 +1,36 @@
 <!-- school#show -->
   <!-- School Name and Static Map -->
-		<h3><%= @school.text %></h3>
-    <%= image_tag "https://maps.googleapis.com/maps/api/staticmap?zoom=13&size=600x300&maptype=roadmap&markers=#{@school.latitude}%2C#{@school.longitude}&key=#{ENV['GOOGLE_API_KEY']}"%>
+<div class="center-static">
+	<h3><%= @school.text %></h3>
+	<div class="image">
+		<%= image_tag "https://maps.googleapis.com/maps/api/staticmap?zoom=13&size=600x300&maptype=roadmap&markers=#{@school.latitude}%2C#{@school.longitude}&key=#{ENV['GOOGLE_API_KEY']}"%>
+	</div>
 
-  <!-- Review Content -->
-    <div class="features">
-			<article>
-				<div class="inner">
-          <% if @school.reviews.any? %>
-            <h4>Schoool Reviews</h4>
-            <% @school.reviews.each do |review| %>
-              <p><%=  review.title %></p>
-              <p><%=  review.content %></p>
-              <p>By: <%= current_user.first_name %></p>
-              <% if review.user_id == current_user.id %>
-                <%= link_to "Edit", edit_school_review_path(@school, review.id) %>
-                <%= link_to "Delete", school_review_path(@school, review.id), method: "delete" %>
-              <% end %>
+<!-- Review Content -->
+  <div class="features">
+		<article>
+			<div class="inner">
+        <% if @school.reviews.any? %>
+          <h4>Schoool Reviews</h4>
+          <% @school.reviews.each do |review| %>
+            <p><%=  review.title %></p>
+            <p><%=  review.content %></p>
+            <p>By: <%= current_user.first_name %></p>
+            <% if review.user_id == current_user.id %>
+              <%= link_to "Edit", edit_school_review_path(@school, review.id) %>
+              <%= link_to "Delete", school_review_path(@school, review.id), method: "delete" %>
             <% end %>
-            <br>
-          <% else %>
-            <p>Be the first to review <%= @school.text %></p>
+						<hr>
           <% end %>
-
-			</article>
-      <hr>
-      <%= link_to "New Review", new_school_review_path(@school) %>
-
-      <hr>
-      <%= link_to 'Back', root_path %>
-    </div>
-    </div>
-	
+          <br>
+        <% else %>
+          <p>Be the first to review <%= @school.text %></p>
+        <% end %>
+			</div>
+		</article>
+    <hr>
+    <%= link_to "New Review", new_school_review_path(@school) %>
+    <hr>
+    <%= link_to 'Back', root_path %>
+  </div>
+</div>

@@ -57,16 +57,12 @@
 				$nav_a
 					.scrolly({ offset: 44 })
 					.on('click', function(event) {
-
-						var $this = $(this),
-							href = $this.attr('href');
-
+						// Prevent default behavior.
+							event.preventDefault();
+							var href = $(this).attr('href');
 						// Not an internal link? Bail.
 							if (href.charAt(0) != '#')
 								return;
-
-						// Prevent default behavior.
-							event.preventDefault();
 
 						// Remove active class from all links and mark them as locked (so scrollzer leaves them alone).
 							$nav_a
@@ -74,13 +70,12 @@
 								.addClass('scrollzer-locked');
 
 						// Set active class on this link.
-							$this.addClass('active');
+							$("nav a").addClass('active');
 
 					})
 					.each(function() {
 
-						var $this = $(this),
-							href = $this.attr('href'),
+						var	href = $(this).attr('href'),
 							id;
 
 						// Not an internal link? Bail.
@@ -89,7 +84,7 @@
 
 						// Add to scrollzer ID list.
 							id = href.substring(1);
-							$this.attr('id', id + '-link');
+							$(this).attr('id', id + '-link');
 							ids.push(id);
 
 					});

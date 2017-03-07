@@ -4,8 +4,8 @@
     <title>Graded</title>
     <%= csrf_meta_tags %>
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <link rel="stylesheet" href="../assets/css/main.css" />
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <link rel="stylesheet" href="../assets/css/main.css" />
     <%= stylesheet_link_tag    'css/main', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
@@ -15,11 +15,11 @@
 			<section id="header">
 				<header>
 					<h1 id="logo"><a href="/">Graded</a></h1>
-					<p>It's the ninth hour. Do you know who's teaching your kids?</p>
+					<p>It's the eleventh hour. Do you know who's teaching your kids?</p>
 				</header>
 				<nav id="nav">
 					<ul>
-						<li><a href="">About</a></li>
+						<li><a href="/">Home</a></li>
             <li><%= link_to 'Search Schools', searches_path %></li>
             <hr>
             <% if user_signed_in? %>

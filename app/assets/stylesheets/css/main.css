@@ -2439,8 +2439,10 @@
 		.features article .inner {
 			display: inline-block;
 			vertical-align: middle;
-			width: 50%;
+			width: 100%;
+			text-align: center;
 		}
+
 
 			.features article .inner > :last-child {
 				margin-bottom: 0;
@@ -3087,4 +3089,13 @@
 				padding: 0;
 			}
 
+	}
+
+	div.center-static {
+		text-align: center;
+	}
+
+	button#search {
+		background-color: transparent;
+		border: 0px;
 	}
