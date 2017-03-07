@@ -2,7 +2,7 @@
 
 <h2><%= @school.text %></h2>
 
-<%= image_tag "https://maps.googleapis.com/maps/api/staticmap?zoom=13&size=600x300&maptype=roadmap&markers=#{@school.latitude}%2C#{@school.longitude}&key=#{ENV['GOOGLE_STATIC_KEY']}"%>
+<%= image_tag "https://maps.googleapis.com/maps/api/staticmap?zoom=13&size=600x300&maptype=roadmap&markers=#{@school.latitude}%2C#{@school.longitude}&key=#{ENV['GOOGLE_API_KEY']}"%>
 
 <hr>
 
