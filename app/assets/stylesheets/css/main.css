@@ -3100,3 +3100,9 @@
 		background-color: transparent;
 		border: 0px;
 	}
+
+	button#search:focus,
+	button#search:hover {
+		outline: none;
+		cursor: pointer;
+	}
