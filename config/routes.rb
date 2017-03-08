@@ -6,11 +6,15 @@ Rails.application.routes.draw do
 
   resources :searches, :except => [:new, :show, :edit, :update, :destroy]
 
-  resources :users do
-    resources :reviews, :except => [:new, :create]
+  resources :schools, :except => [:index, :new, :edit, :update, :destroy] do
+    resources :teachers
   end
 
-  resources :schools, :except => [:index, :new, :edit, :update, :destroy] do
+  resources :schools, :only => [] do
+    resources :reviews, :except => [:index, :show]
+  end
+
+  resources :teachers, :only => [] do
     resources :reviews, :except => [:index, :show]
   end
 

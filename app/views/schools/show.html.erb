@@ -30,6 +30,31 @@
 		</article>
     <%= link_to "New Review", new_school_review_path(@school) %>
     <hr>
+
+		<div class="features">
+			<article>
+				<div class="inner">
+	        <% if @school.teachers.any? %>
+	          <h4>Teachers</h4>
+	          <% @school.teachers.each do |teacher| %>
+							<%= link_to school_teacher_path(@school, teacher) do %>
+	            <p><%=  teacher.first_name %></p>
+							<% end %>
+	            <% if teacher.user_id == current_user.id %>
+	              <%= link_to "Edit", edit_school_teacher_path(@school, teacher.id) %>
+	              <%= link_to "Delete", school_teacher_path(@school, teacher.id), method: "delete" %>
+	            <% end %>
+							<hr>
+	          <% end %>
+	          <br>
+	        <% else %>
+	          <p>Be the first to add teacher to <%= @school.text %></p>
+	        <% end %>
+				</div>
+			</article>
+	    <%= link_to "New Teacher", new_school_teacher_path(@school) %>
+
+		<hr>
     <%= link_to 'Back', root_path %>
   </div>
 </div>
