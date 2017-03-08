@@ -4,18 +4,18 @@
   <%= devise_error_messages! %>
 
   <div class="field">
-    <%= f.label :first_name %><br />
-    <%= f.text_field :first_name, autofocus: true %>
+    <%= f.label :first_name %>
+    <%= f.text_field :first_name, autofocus: true %><br />
   </div>
 
   <div class="field">
-    <%= f.label :last_name %><br />
-    <%= f.text_field :last_name, autofocus: true %>
+    <%= f.label :last_name %>
+    <%= f.text_field :last_name, autofocus: true %><br />
   </div>
 
   <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true %>
+    <%= f.label :email %>
+    <%= f.email_field :email, autofocus: true %><br />
   </div>
 
   <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
@@ -32,13 +32,13 @@
   </div>
 
   <div class="field">
-    <%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "off" %>
+    <%= f.label :password_confirmation %>
+    <%= f.password_field :password_confirmation, autocomplete: "off" %><br />
   </div>
 
   <div class="field">
-    <%= f.label :current_password %> <i>(we need your current password to confirm your changes)</i><br />
-    <%= f.password_field :current_password, autocomplete: "off" %>
+    <%= f.label :current_password %> <i>(we need your current password to confirm your changes)</i>
+    <%= f.password_field :current_password, autocomplete: "off" %><br />
   </div>
   <br>
   <div class="actions">
