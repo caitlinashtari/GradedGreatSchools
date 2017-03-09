@@ -1,0 +1,38 @@
+<div class="features">
+  <article>
+    <div class="inner">
+      <h4><%= @teacher.first_name %> <%= @teacher.last_name %></h4>
+      <p>Grade: <%=  @teacher.grade_level %></p>
+      <p>Subject: <%=  @teacher.subject %></p>
+    </div>
+  </article>
+
+  <hr>
+
+  <div class="features">
+    <article>
+      <div class="inner">
+        <% if @teacher.reviews.any? %>
+          <h4>Reviews</h4>
+          <% @teacher.reviews.each do |review| %>
+            <p><%=  review.title %></p>
+            <p><%=  review.content %></p>
+            <p>By: <%= current_user.first_name %></p>
+            <% if @teacher.user_id == current_user.id %>
+              <%= link_to "Edit Review", edit_school_teacher_path(@school, @teacher.id) %>
+              <%= link_to "Delete Review", school_teacher_path(@school, @teacher.id), method: "delete" %>
+            <% end %>
+            <hr>
+          <% end %>
+          <br>
+        <% else %>
+          <p>Be the first to review <%= @teacher.first_name %><%= @teacher.last_name %></p>
+        <% end %>
+        <%= link_to "New Teacher Review", new_teacher_review_path(@teacher) %>
+      </div>
+    </article>
+<hr>
+<div class="center-static">
+  <%= link_to 'Edit Teacher', edit_school_teacher_path(@school, @teacher) %> |
+  <%= link_to 'Back', school_path(@school) %>
+</div>
