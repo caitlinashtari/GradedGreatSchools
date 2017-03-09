@@ -26,7 +26,7 @@
           <% end %>
           <br>
         <% else %>
-          <p>Be the first to review <%= @teacher.first_name %><%= @teacher.last_name %></p>
+          <p>Be the first to review <%= @teacher.first_name %> <%= @teacher.last_name %></p>
         <% end %>
         <%= link_to "New Teacher Review", new_teacher_review_path(@teacher) %>
       </div>
