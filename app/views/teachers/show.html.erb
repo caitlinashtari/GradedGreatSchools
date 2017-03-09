@@ -19,8 +19,8 @@
             <p><%=  review.content %></p>
             <p>By: <%= current_user.first_name %></p>
             <% if @teacher.user_id == current_user.id %>
-              <%= link_to "Edit Review", edit_school_teacher_path(@school, @teacher.id) %>
-              <%= link_to "Delete Review", school_teacher_path(@school, @teacher.id), method: "delete" %>
+              <%= link_to "Edit Review", edit_teacher_review_path(@teacher, review.id) %>
+              <%= link_to "Delete Review", teacher_review_path(@teacher, review.id), method: "delete" %>
             <% end %>
             <hr>
           <% end %>

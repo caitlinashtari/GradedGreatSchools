@@ -3,11 +3,11 @@ class SearchesController < ApplicationController
   before_action :authenticate_user!
 
   # GET /searches
-  # GET /searches.json
   def index
     @search = Search.new
     @searches = Search.all
     if @searches.any?
+      # refactor to return last only if user created search
       @last_search = Search.last
       @client = GooglePlaces::Client.new(ENV['GOOGLE_API_KEY'])
       @spots = @client.spots(@last_search.latitude, @last_search.longitude, :types => 'school')
@@ -21,7 +21,6 @@ class SearchesController < ApplicationController
   end
 
   # POST /searches
-  # POST /searches.json
   def create
     @search = Search.new(search_params)
     respond_to do |format|
@@ -36,12 +35,11 @@ class SearchesController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
+    # callbacks
     def set_search
       @search = Search.find(params[:id])
     end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
     def search_params
       params.require(:search).permit(:latitude, :longitude, :address, :zip)
     end

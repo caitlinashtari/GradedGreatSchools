@@ -28,9 +28,12 @@
         <% end %>
 			</div>
 		</article>
+
+	<!-- New School Review Link -->
     <%= link_to "New Review", new_school_review_path(@school) %>
     <hr>
 
+<!-- Teacher Content -->
 		<div class="features">
 			<article>
 				<div class="inner">
@@ -42,7 +45,7 @@
 							<% end %>
 	            <% if teacher.user_id == current_user.id %>
 	              <%= link_to "Edit", edit_school_teacher_path(@school, teacher.id) %>
-	              <%= link_to "Delete", school_teacher_path(@school, teacher.id), method: "delete" %>
+	              <%= link_to "Delete", school_teacher_path(@school, teacher.id), method: :delete %>
 	            <% end %>
 							<hr>
 	          <% end %>
@@ -52,6 +55,8 @@
 	        <% end %>
 				</div>
 			</article>
+
+		<!-- New Teacher Link -->
 	    <%= link_to "New Teacher", new_school_teacher_path(@school) %>
 
 		<hr>

@@ -2,9 +2,11 @@ class ReviewsController < ApplicationController
   before_action :authenticate_user!
 
   def new
+    # New School Review
     if params[:school_id]
       @school = School.find(params[:school_id])
       @review = @school.reviews.new
+    # New Teacher Review
     elsif params[:teacher_id]
       @teacher = Teacher.find(params[:teacher_id])
       @review = @teacher.reviews.new
@@ -12,6 +14,7 @@ class ReviewsController < ApplicationController
   end
 
   def create
+    # Create School Review
     if params[:school_id]
       @school = School.find(params[:school_id])
       @review = @school.reviews.new(review_params)
@@ -21,6 +24,7 @@ class ReviewsController < ApplicationController
       else
         render :new
       end
+    # Create Teacher Review
     elsif params[:teacher_id]
       @teacher = Teacher.find(params[:teacher_id])
       @review = @teacher.reviews.new(review_params)
@@ -35,25 +39,47 @@ class ReviewsController < ApplicationController
   end
 
   def edit
-    @school = School.find(params[:school_id])
-    @review = Review.find(params[:id])
+    if params[:school_id]
+      @school = School.find(params[:school_id])
+      @review = Review.find(params[:id])
+    elsif params[:teacher_id]
+      @teacher = Teacher.find(params[:teacher_id])
+      @review = Review.find(params[:id])
+    end
   end
 
   def update
-    @school = School.find(params[:school_id])
-    @review = Review.find(params[:id])
-    if @review.update(review_params)
-      redirect_to school_path(@school)
-    else
-      render :edit
+    if params[:school_id]
+      @school = School.find(params[:school_id])
+      @review = Review.find(params[:id])
+      if @review.update(review_params)
+        redirect_to school_path(@school)
+      else
+        render :edit
+      end
+    elsif params[:teacher_id]
+      @teacher = Teacher.find(params[:teacher_id])
+      @review = Review.find(params[:id])
+      if @review.update(review_params)
+        redirect_to school_teacher_path(@teacher.school_id, @teacher)
+      else
+        render :edit
+      end
     end
   end
 
   def destroy
-    @school = School.find(params[:school_id])
-    @review = Review.find(params[:id])
-    @review.destroy
-    redirect_to school_path(@school)
+    if params[:school_id]
+      @school = School.find(params[:school_id])
+      @review = Review.find(params[:id])
+      @review.destroy
+      redirect_to school_path(@school)
+    elsif params[:teacher_id]
+      @teacher = Teacher.find(params[:teacher_id])
+      @review = Review.find(params[:id])
+      @review.destroy
+      redirect_to school_teacher_path(@teacher.school_id, @teacher)
+    end
   end
 
 private
