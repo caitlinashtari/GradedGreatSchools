@@ -17,7 +17,7 @@
           <% @teacher.reviews.each do |review| %>
             <p><%=  review.title %></p>
             <p><%=  review.content %></p>
-            <p>By: <%= current_user.first_name %></p>
+            <p>By: <%= review.author %></p>
             <% if @teacher.user_id == current_user.id %>
               <%= link_to "Edit Review", edit_teacher_review_path(@teacher, review.id) %>
               <%= link_to "Delete Review", teacher_review_path(@teacher, review.id), method: "delete" %>
