@@ -1,1 +1,10 @@
+div#zip-submit.input-field{
+  outline: none;
+  &:focus {
 
+  }
+}
+
+div#zip-submit {
+  display: inline-block;
+}

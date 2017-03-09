@@ -11,12 +11,12 @@
     </div>
   <% end %>
 
-  <div class="input-field">
-   <%= f.number_field :zip, id: "search", type: "search", value: @last_search.zip, size: "30x10"%>
+  <div class="input-field" id="zip-input">
+   <%= f.number_field :zip, id: "search", type: "search", value: @last_search.zip%>
   </div>
 
 
-  <div class="actions">
+  <div class="actions" id="zip-submit">
     <%= f.button :submit, id: "search", size: "30x10" do %>
     <ul class="feature-icons">
       <li class="fa-search">
