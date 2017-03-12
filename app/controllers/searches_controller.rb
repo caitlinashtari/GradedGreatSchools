@@ -6,8 +6,7 @@ class SearchesController < ApplicationController
   def index
     @search = Search.new
     @searches = Search.all
-    if @searches.any?
-      # refactor to return last only if user created search
+    if @searches != nil
       @last_search = Search.last
       @client = GooglePlaces::Client.new(ENV['GOOGLE_API_KEY'])
       @spots = @client.spots(@last_search.latitude, @last_search.longitude, :types => 'school')
