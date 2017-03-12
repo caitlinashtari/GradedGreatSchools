@@ -11,12 +11,13 @@ class SearchesController < ApplicationController
       @last_search = Search.last
       @client = GooglePlaces::Client.new(ENV['GOOGLE_API_KEY'])
       @spots = @client.spots(@last_search.latitude, @last_search.longitude, :types => 'school')
-    end
-    @hash = Gmaps4rails.build_markers(@spots) do |spot, marker|
-      marker.lat spot.lat
-      marker.lng spot.lng
-      marker.infowindow spot.name
-      marker.json({:id => spot.id})
+
+      @hash = Gmaps4rails.build_markers(@spots) do |spot, marker|
+        marker.lat spot.lat
+        marker.lng spot.lng
+        marker.infowindow spot.name
+        marker.json({:id => spot.id})
+      end
     end
   end
 
