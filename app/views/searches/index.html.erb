@@ -19,9 +19,9 @@
   <!-- List of Search Results -->
   <% if @searches.any? %>
     <h4>Schools</h4>
-    <% @spots.each do |spot| %>
-        <%= link_to schools_path(text: spot.name, latitude: spot.lat, longitude: spot.lng), method: "post" do %>
-          <p id="new-search"><%= spot.name %></p>
+    <% @great_schools.each do |school| %>
+        <%= link_to schools_path(text: school['name'], latitude: @last_search.latitude, longitude: @last_search.longitude), method: "post" do %>
+          <p id="new-search"><%= school['name'] %></p>
         <% end %>
     <% end %>
   <% end %>

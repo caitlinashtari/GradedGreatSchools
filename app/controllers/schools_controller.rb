@@ -5,7 +5,7 @@ class SchoolsController < ApplicationController
   # GET /schools
   def index
     new_great_schools = GreatSchools.new
-    @greatSchools = new_great_schools.get_great_schools()
+    @greatSchools = new_great_schools.get_great_schools_nearby()
   end
 
   # GET /schools/1

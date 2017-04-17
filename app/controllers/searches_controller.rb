@@ -8,14 +8,16 @@ class SearchesController < ApplicationController
     @searches = Search.all
     if @searches != nil
       @last_search = Search.last
-      @client = GooglePlaces::Client.new(ENV['GOOGLE_API_KEY'])
-      @spots = @client.spots(@last_search.latitude, @last_search.longitude, :types => 'school')
+      new_great_schools = GreatSchools.new(@last_search.latitude, @last_search.longitude)
+      @great_schools = new_great_schools.get_great_schools_nearby()
+      # @client = GooglePlaces::Client.new(ENV['GOOGLE_API_KEY'])
+      # @spots = @client.spots(@last_search.latitude, @last_search.longitude, :types => 'school')
 
-      @hash = Gmaps4rails.build_markers(@spots) do |spot, marker|
-        marker.lat spot.lat
-        marker.lng spot.lng
-        marker.infowindow spot.name
-        marker.json({:id => spot.id})
+      @hash = Gmaps4rails.build_markers(@last_search) do |last_search, marker|
+        marker.lat last_search.latitude
+        marker.lng last_search.longitude
+        marker.infowindow last_search['name']
+        marker.json({:id => last_search.id})
       end
     end
   end
