@@ -20,7 +20,7 @@
   <% if @searches.any? %>
     <h4>Schools</h4>
     <% @great_schools.each do |school| %>
-        <%= link_to schools_path(text: school['name'], latitude: @last_search.latitude, longitude: @last_search.longitude), method: "post" do %>
+        <%= link_to schools_path(text: school['name'], latitude: school['lat'], longitude: school['lon']), method: "post" do %>
           <p id="new-search"><%= school['name'] %></p>
         <% end %>
     <% end %>

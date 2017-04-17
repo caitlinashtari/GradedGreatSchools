@@ -10,6 +10,7 @@ class SearchesController < ApplicationController
       @last_search = Search.last
       new_great_schools = GreatSchools.new(@last_search.latitude, @last_search.longitude)
       @great_schools = new_great_schools.get_great_schools_nearby()
+      # old client using google places
       # @client = GooglePlaces::Client.new(ENV['GOOGLE_API_KEY'])
       # @spots = @client.spots(@last_search.latitude, @last_search.longitude, :types => 'school')
 
