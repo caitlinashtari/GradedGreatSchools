@@ -21,6 +21,7 @@ gem 'material_icons'
 gem 'geocoder'
 gem 'gmaps4rails'
 gem 'google_places'
+gem 'httparty'
 
 group :development, :test do
   gem 'byebug', platform: :mri
@@ -31,6 +32,7 @@ group :development, :test do
   gem 'capybara'
   gem 'factory_girl_rails'
   gem 'simplecov', require: false
+  gem 'dotenv-rails'
 end
 
 group :development do
@@ -38,7 +40,6 @@ group :development do
   gem 'listen', '~> 3.0.5'
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
-  gem 'dotenv-rails'
 end
 
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]

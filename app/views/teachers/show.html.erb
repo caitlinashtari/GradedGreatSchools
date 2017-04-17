@@ -12,23 +12,7 @@
   <div class="features">
     <article>
       <div class="inner">
-        <% if @teacher.reviews.any? %>
-          <h4>Reviews</h4>
-          <% @teacher.reviews.each do |review| %>
-            <p><%=  review.title %></p>
-            <p><%=  review.content %></p>
-            <p>By: <%= review.author %></p>
-            <% if @teacher.user_id == current_user.id %>
-              <%= link_to "Edit Review", edit_teacher_review_path(@teacher, review.id) %>
-              <%= link_to "Delete Review", teacher_review_path(@teacher, review.id), method: "delete" %>
-            <% end %>
-            <hr>
-          <% end %>
-          <br>
-        <% else %>
-          <p>Be the first to review <%= @teacher.first_name %> <%= @teacher.last_name %></p>
-        <% end %>
-        <%= link_to "New Teacher Review", new_teacher_review_path(@teacher) %>
+          <h4>Teacher</h4>
       </div>
     </article>
 <hr>

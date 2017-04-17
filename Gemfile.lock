@@ -269,6 +269,7 @@ DEPENDENCIES
   geocoder
   gmaps4rails
   google_places
+  httparty
   jbuilder (~> 2.5)
   jquery-rails
   launchy
