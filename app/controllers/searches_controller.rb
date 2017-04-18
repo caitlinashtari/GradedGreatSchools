@@ -4,6 +4,7 @@ class SearchesController < ApplicationController
 
   # GET /searches
   def index
+    # refactor so as not to start page off on last search, but on IP address loc
     @search = Search.new
     @searches = Search.all
     if @searches != nil

@@ -6,7 +6,7 @@ Rails.application.routes.draw do
 
   resources :searches, :except => [:new, :show, :edit, :update, :destroy]
 
-  resources :schools, :except => [:new, :edit, :update, :destroy] do
+  resources :schools, :except => [:index, :new, :edit, :update, :destroy] do
     resources :teachers
   end
 

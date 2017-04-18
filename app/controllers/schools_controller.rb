@@ -2,14 +2,9 @@ class SchoolsController < ApplicationController
   before_action :set_school, only: [:show]
   before_action :authenticate_user!
 
-  # GET /schools
-  def index
-    new_great_schools = GreatSchools.new
-    @greatSchools = new_great_schools.get_great_schools_nearby()
-  end
-
   # GET /schools/1
   def show
+    
   end
 
   # POST /schools
