@@ -1,10 +1,24 @@
-div#zip-submit.input-field{
-  outline: none;
-  &:focus {
+// div#zip-submit.input-field{
+//   outline: none;
+//   &:focus {
+//
+//   }
+// }
+//
+// div#zip-submit {
+//   display: inline-block;
+// }
 
-  }
+div.search-field {
+  display: flex;
+  justify-content: space-around;
+  width: 40%;
+  align-content: center;
+  margin-left: auto;
+  margin-right: auto;
 }
 
-div#zip-submit {
-  display: inline-block;
+#zip-submit {
+  display: flex;
+  align-content: center;
 }

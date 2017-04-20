@@ -11,18 +11,20 @@
     </div>
   <% end %>
 
+<div class="search-field">
   <div class="input-field" id="zip-input">
-   <%= f.number_field :zip, id: "search", type: "search", placeholder: "Zip Code"%>
+   <%= f.number_field :zip, id: "search", type: "text", placeholder: "Zip Code"%>
   </div>
 
 
   <div class="actions" id="zip-submit">
-    <%= f.button :submit, id: "search", size: "30x10" do %>
+    <%= f.button :submit, id: "search" do %>
     <ul class="feature-icons">
-      <li class="fa-search">
+      <li class="fa-search fa-lg">
       </li>
     </ul>
     <% end %>
 
   </div>
+</div>
 <% end %>
